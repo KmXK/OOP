@@ -17,7 +17,14 @@
             <ComboBox x:Name="ComboBox" SelectionChanged="ComboBox_OnSelectionChanged"
                       Margin="10 10">
             </ComboBox>
-            <Button Content="Draw" Click="DrawButton_Click" Margin="10 0"></Button>
+            <Button Content="Draw" Click="DrawButton_Click" Margin="10 0"
+                    Background="Azure">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
 
         <Canvas Grid.Column="1" x:Name="DrawCanvas" ZIndex="-1000" Width="Auto"
