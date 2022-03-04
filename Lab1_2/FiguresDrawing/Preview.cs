@@ -26,6 +26,8 @@ public abstract class Preview
     public abstract void MouseMove(Point p);
     public abstract void MouseUp(Point p);
 
+    public virtual void RequestToDraw() { }
+
     public virtual void Reset()
     {
         if(_previewShape != null)
@@ -36,5 +38,6 @@ public abstract class Preview
     public virtual void OnDrawn()
     {
         Drawn?.Invoke(this, new PreviewEventArgs(Points));
+        Reset();
     }
 }

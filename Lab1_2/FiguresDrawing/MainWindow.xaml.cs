@@ -34,7 +34,8 @@ public partial class MainWindow : Window, IPointInputable
             ("Square", new SquareCreator(), new RectanglePreviewFactory()),
             ("Ellipse", new EllipseCreator(), new RectanglePreviewFactory()),
             ("Polyline", new PolylineCreator(), new PolylinePreviewFactory()),
-            ("Polygon", new PolygonCreator(), new PolylinePreviewFactory())
+            ("Polygon", new PolygonCreator(), new PolylinePreviewFactory()),
+            ("Triangle", new TriangleCreator(), new PolylinePreviewFactory(3))
         };
 
     private readonly FiguresWpfDrawer[] _drawers;
@@ -128,7 +129,7 @@ public partial class MainWindow : Window, IPointInputable
 
     private void DrawButton_Click(object sender, RoutedEventArgs e)
     {
-        DrawCurrentFigure();
+        _preview.RequestToDraw();
     }
 
     private void ComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -140,7 +141,6 @@ public partial class MainWindow : Window, IPointInputable
     private void StopDrawing()
     {
         _isMouseDown = false;
-        _preview.Reset();
     }
 
     private void DrawCurrentFigure()
